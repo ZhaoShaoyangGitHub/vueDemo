@@ -1,4 +1,5 @@
 import axios from 'axios'
+import store from '@/store'
 
 
 // 创建axios 实例
@@ -11,10 +12,20 @@ const service = axios.create({
 service.interceptors.request.use(
   config => {
     // 这里可以自定义一些config 配置
+
+    // loading + 1
+    store.dispatch('SetLoading', true)
+
     return config
   },
   error => {
     // 这里处理一些请求出错的情况
+
+    // loading清0
+    setTimeout(function (){
+      store.dispatch("SetLoading", 0)
+    },300)
+
     console.log(error)
     Promise.reject(error)
   }
@@ -26,10 +37,18 @@ service.interceptors.response.use(
   response => {
     const res = response.data
     // 这里处理一些response 正常放回时的逻辑
+
+    // loading - 1
+    store.dispatch('SetLoading', false)
+
     return res
   },
   error => {
     // 这里处理一些response 出错时的逻辑
+    
+    // loading - 1
+    store.dispatch('SetLoading', false)
+
     return Promise.reject(error)
   }
 )
