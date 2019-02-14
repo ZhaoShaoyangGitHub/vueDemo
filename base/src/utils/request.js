@@ -4,8 +4,14 @@ import store from '@/store'
 
 // 创建axios 实例
 const service = axios.create({
-  baseURL: process.env.BASE_API, // api的base_url
-  timeout: 10000 // 请求超时时间
+  // baseURL: process.env.BASE_API, // api的base_url
+  timeout: 10000, // 请求超时时间
+  responseType: "json",
+  withCredentials: true, // 是否允许带cookie这些
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+    Platform: "web"
+  }
 })
 
 // request 拦截器

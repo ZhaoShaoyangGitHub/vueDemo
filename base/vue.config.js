@@ -49,7 +49,8 @@ module.exports = {
       const argv = process.argv
       const mode = argv[argv.indexOf('--project-mode') + 1]
       args[0]['process.env'].MODE = `"${mode}"`
-      args[0]['process.env'].BASE_API = '"http://47.94.138.75:8000"'
+      args[0]['process.env'].BASE_API = '"http://ip-29-jihuokeji-swagger.coralcodes.com/"'
+      console.log(args);
       return args
     })
 
@@ -103,19 +104,23 @@ module.exports = {
         disableHostCheck: true
       }
     }
-    // open: true,
-    // hot: true
-    // // https: true,
-    // // proxy: {
-    // // '/proxy': {
-    // // target: 'http://47.94.138.75',
-    // // // changeOrigin: true,
-    // // pathRewrite: {
-    // // '^/proxy': ''
-    // // }
-    // // }
-    // // },
-    // }
+    
     return myConfig
+  },
+  devServer: {
+    // open: true,
+    // hot: true,
+    // https: true,
+    // proxy: {
+    //   '/api': {
+    //      target: 'http://ip-29-jihuokeji-swagger.coralcodes.com/',
+    //      changeOrigin: true,
+    //      pathRewrite: {
+    //        '^/api': ''
+    //      }
+    //    }
+    // },
+    proxy: "http://ip-29-jihuokeji-swagger.coralcodes.com/",
+    // port: 3000
   }
 }
