@@ -1,6 +1,6 @@
 <template>
     <div class="not-find">
-        <h1>404页面</h1>
+        <h1 class="text-center">404页面</h1>
     </div>
 </template>
 
