@@ -25,7 +25,6 @@ service.interceptors.request.use(
     setTimeout(function () {
       store.dispatch("SetLoading", 0);
     }, 300);
-    console.log(error);
     Promise.reject(error);
   }
 );
