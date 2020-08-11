@@ -10,12 +10,12 @@
 import { mapGetters } from 'vuex'
 
 export default {
-    name: 'requestLoading',
-    computed: {
-        ...mapGetters([
-            'requestLoading'
-        ])
-    },
+  name: 'requestLoading',
+  computed: {
+    ...mapGetters([
+      'requestLoading'
+    ])
+  }
 }
 </script>
 
