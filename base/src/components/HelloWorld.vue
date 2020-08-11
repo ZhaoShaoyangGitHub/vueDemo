@@ -1,16 +1,33 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>child: {{ msg }}</h1>
+    <button @click="emit()">childTitleBtn</button>
+    <h2>child: {{ subTitle }}</h2>
+    <button @click="emitSubTitle">subTitle</button>
+    <RequestLoading />
   </div>
 </template>
 
 <script>
+import RequestLoading from "./RequestLoading";
 export default {
-  name: 'HelloWorld',
+  name: "HelloWorld",
   props: {
-    msg: String
-  }
-}
+    msg: String,
+    subTitle: String,
+  },
+  methods: {
+    emit() {
+      this.$emit("update:msg", "childTitle");
+    },
+    emitSubTitle() {
+      this.$emit("childSubTitle", "change subTitle");
+    },
+  },
+  components: {
+    RequestLoading,
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -1,17 +1,17 @@
-import request from '@/utils/request';
+import request from "@/utils/request";
 
 export default {
-  login (data) {
+  login(data) {
     return request({
-      url: '',
-      method: 'post',
-      data
+      url: "",
+      method: "post",
+      data,
     });
   },
-  banner () {
+  banner() {
     return request({
-      url: '/api/system/banner/list',
-      method: 'get'
+      url: "/api/u/article/list?categoryId=&title=&pageIndex=1",
+      method: "GET",
     });
-  }
+  },
 };

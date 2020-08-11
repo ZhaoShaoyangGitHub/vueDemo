@@ -20,6 +20,7 @@
     "js-cookie": "^2.2.0",
     "nprogress": "^0.2.0",
     "vue": "^2.5.21",
+    "vue-meta-info": "^0.1.7",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
@@ -32,7 +33,9 @@
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
     "node-sass": "^4.9.0",
+    "prerender-spa-plugin": "^3.4.0",
     "sass-loader": "^7.0.1",
+    "svg-sprite-loader": "^5.0.0",
     "vue-template-compiler": "^2.5.21"
   }
 }
