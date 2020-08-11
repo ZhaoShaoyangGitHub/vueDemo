@@ -4,6 +4,8 @@ import router from "./router";
 import store from "./store";
 import * as common from "./utils/common";
 import "@/icons";
+import "element-ui/lib/theme-chalk/index.css";
+
 import MetaInfo from "vue-meta-info"; //引入vue-meta-info
 Vue.use(MetaInfo);
 
