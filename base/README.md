@@ -27,3 +27,29 @@ npm run lint
 ```
 npm run lint--fix
 ```
+
+# 升级依赖包
+
+## 1：安装依赖
+
+```
+npm install -g npm-check-updates
+```
+
+## 2：检测依赖
+
+```
+ncu
+```
+
+## 3：更新到最新版本
+
+```
+ncu -u
+```
+
+### OR
+
+```
+cun -a
+```
