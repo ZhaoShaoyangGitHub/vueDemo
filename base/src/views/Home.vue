@@ -25,37 +25,33 @@ export default {
     meta: [
       {
         name: "keywords",
-        content: "首页",
+        content: "首页"
       },
       {
         name: "discription",
-        content: "测试",
-      },
-    ],
+        content: "测试"
+      }
+    ]
   },
   data() {
     return {
       title: "Welcome to Your Vue.js App",
-      subTitle: "subIitle",
+      subTitle: "subIitle"
     };
   },
   components: {
-    HelloWorld,
+    HelloWorld
   },
   created() {
     user
       .banner()
-      .then((res) => {
-        console.log(res);
-      })
-      .then((err) => {
-        console.log(err);
-      });
+      .then(res => {})
+      .then(err => {});
   },
   methods: {
     emitSubTitle(value) {
       this.subTitle = value;
-    },
-  },
+    }
+  }
 };
 </script>

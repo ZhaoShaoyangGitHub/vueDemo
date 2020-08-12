@@ -17,7 +17,6 @@ module.exports = {
       args[0][
         "process.env"
       ].BASE_API = `"http://ip-30-rongyue-swagger.coralcodes.com/"`;
-      console.log(args);
       return args;
     });
 
