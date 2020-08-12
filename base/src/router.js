@@ -4,6 +4,29 @@ import Home from "./views/Home.vue";
 
 Vue.use(Router);
 
+const routeOptions = [
+  {
+    path: "/",
+    name: "home"
+  },
+  {
+    path: "/about",
+    name: "about"
+  },
+  {
+    path: "/404",
+    name: "404"
+  }
+];
+
+const routes = routeOptions.map(route => {
+  if (!route.component) {
+    route = {
+      ...route
+    };
+  }
+});
+
 export default new Router({
   mode: "history",
   base: process.env.BASE_URL,
@@ -12,7 +35,7 @@ export default new Router({
     {
       path: "/",
       name: "home",
-      component: Home,
+      component: Home
     },
     {
       path: "/about",
@@ -21,8 +44,8 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue"),
+        import(/* webpackChunkName: "about" */ "./views/About.vue")
     },
-    { path: "*", redirect: "/404" },
-  ],
+    { path: "*", redirect: "/404" }
+  ]
 });

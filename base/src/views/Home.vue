@@ -6,11 +6,14 @@
       :subTitle="subTitle"
       @childSubTitle="emitSubTitle"
     />
-    <h2>{{ title }}</h2>
+    <h2 v-role="color">{{ title}}</h2>
     <h3>{{ subTitle }}</h3>
     <hr />
     <h3>Store</h3>
     <button>store-commit</button>
+    <h3>Watch</h3>
+    <button @click="add">增加</button><div>{{numerber1 | capitalize }}</div>
+    <button @click="subtraction">减少</button><div>{{numerber2}}</div>
   </div>
 </template>
 
@@ -33,24 +36,62 @@ export default {
       }
     ]
   },
+
   data() {
     return {
       title: "Welcome to Your Vue.js App",
-      subTitle: "subIitle"
+      subTitle: "subIitle",
+      numerber1: 1,
+      numerber2: 2,
+      color: "#eeeeee"
     };
   },
+
   components: {
     HelloWorld
   },
   created() {
+    let unwatchFn = this.$watch(
+      "numerber2",
+      function(newVal, oldVal) {
+        console.log("count 新值：" + newVal);
+        console.log("count 旧值：" + oldVal);
+        unwatchFn && unwatchFn();
+      },
+      {
+        immediate: true
+      }
+    );
     user
       .banner()
       .then(res => {})
       .then(err => {});
   },
+  mounted() {},
+  destory() {
+    // this.unWatch();
+  },
   methods: {
     emitSubTitle(value) {
       this.subTitle = value;
+    },
+    add() {
+      this.numerber1++;
+    },
+    subtraction() {
+      this.numerber2 = this.$options.filters.capitalize(this.numerber2--);
+    }
+  },
+  watch: {
+    numerber1(newVal, oldVal) {
+      console.log(newVal, oldVal);
+    }
+  },
+  filters: {
+    capitalize: function(value) {
+      if (!value) return "";
+      value = value.toString();
+      return `${value}filter`;
     }
   }
 };

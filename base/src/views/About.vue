@@ -11,17 +11,17 @@ export default {
     meta: [
       {
         name: "keywords",
-        content: "关于",
+        content: "关于"
       },
       {
         name: "discription",
-        content: "我们",
-      },
-    ],
+        content: "我们"
+      }
+    ]
   },
   data() {
     return {
-      title: "",
+      title: ""
     };
   },
   created() {},
@@ -32,8 +32,8 @@ export default {
     init() {
       this.title = "This is an about page";
       this.addClass(this.$refs.title, "show");
-    },
-  },
+    }
+  }
 };
 </script>
 

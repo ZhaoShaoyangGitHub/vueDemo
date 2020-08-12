@@ -1,12 +1,12 @@
 module.exports = {
   root: true,
   env: {
-    node: true,
+    node: true
   },
   extends: ["plugin:vue/essential", "@vue/standard"],
   rules: {
-    "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
-    "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
+    "no-console": process.env.NODE_ENV === "production" ? [1] : "off",
+    "no-debugger": process.env.NODE_ENV === "production" ? [1] : "off",
     // 关闭强制单引号
     quotes: [0, "single"],
     // 关闭语句强制分号结尾
@@ -18,8 +18,8 @@ module.exports = {
       {
         // 对象字面量中冒号的前后空格
         beforeColon: false,
-        afterColon: true,
-      },
+        afterColon: true
+      }
     ],
     // 空行最多不能超过100行
     "no-multiple-empty-lines": [1, { max: 100 }],
@@ -104,7 +104,7 @@ module.exports = {
     "no-sparse-arrays": 0, //禁止稀疏数组， [1,,0]
     "no-sync": 0, //nodejs 禁止同步方法
     "no-ternary": 0, //禁止使用三目运算符
-    "no-trailing-spaces": 1, //一行结束后面不要有空格
+    "no-trailing-spaces": 2, //一行结束后面不要有空格
     "no-this-before-super": 0, //在调用super()之前不能使用this或super
     "no-throw-literal": 0, //禁止抛出字面量错误 throw "error";
     "no-undef": 1, //不能有未定义的变量
@@ -122,7 +122,7 @@ module.exports = {
     "no-var": 0, //禁用var，用let和const代替
     "no-warning-comments": [
       1,
-      { terms: ["todo", "fixme", "xxx"], location: "start" },
+      { terms: ["todo", "fixme", "xxx"], location: "start" }
     ], //不能有警告备注
     "no-with": 0, //禁用with
     "array-bracket-spacing": [0, "never"], //是否允许非空数组里面有多余的空格
@@ -193,9 +193,9 @@ module.exports = {
     "vars-on-top": 0, //var必须放在作用域顶部
     "wrap-iife": [0, "inside"], //立即执行函数表达式的小括号风格
     "wrap-regex": 0, //正则表达式字面量用小括号包起来
-    yoda: [0, "never"], //禁止尤达条件
+    yoda: [0, "never"] //禁止尤达条件
   },
   parserOptions: {
-    parser: "babel-eslint",
-  },
+    parser: "babel-eslint"
+  }
 };
