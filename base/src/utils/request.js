@@ -8,21 +8,21 @@ const service = axios.create({
   withCredentials: true, // 是否允许带cookie这些
   headers: {
     "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
-    Platform: "web",
-  },
+    Platform: "web"
+  }
 });
 // request 拦截器
 service.interceptors.request.use(
-  (config) => {
+  config => {
     // 这里可以自定义一些config 配置
     // loading + 1
     store.dispatch("SetLoading", true);
     return config;
   },
-  (error) => {
+  error => {
     // 这里处理一些请求出错的情况
     // loading清0
-    setTimeout(function () {
+    setTimeout(function() {
       store.dispatch("SetLoading", 0);
     }, 300);
     Promise.reject(error);
@@ -30,14 +30,14 @@ service.interceptors.request.use(
 );
 // response 拦截器
 service.interceptors.response.use(
-  (response) => {
+  response => {
     const res = response.data;
     // 这里处理一些response 正常放回时的逻辑
     // loading - 1
     store.dispatch("SetLoading", false);
     return res;
   },
-  (error) => {
+  error => {
     // 这里处理一些response 出错时的逻辑
     // loading - 1
     store.dispatch("SetLoading", false);

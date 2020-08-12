@@ -1,3 +1,4 @@
+/* eslint-disable standard/computed-property-even-spacing */
 const PrerenderSPAPlugin = require("prerender-spa-plugin");
 const Renderer = PrerenderSPAPlugin.PuppeteerRenderer;
 const path = require("path");
@@ -7,9 +8,9 @@ function resolve(dir) {
 }
 
 module.exports = {
-  chainWebpack: (config) => {
+  chainWebpack: config => {
     //这里是对环境的配置，不同环境对应不同的BASE_API，以便axios的请求地址不同
-    config.plugin("define").tap((args) => {
+    config.plugin("define").tap(args => {
       const argv = process.argv;
       const mode = argv[argv.indexOf("--project-mode") + 1];
       args[0]["process.env"].MODE = `"${mode}"`;
@@ -29,7 +30,7 @@ module.exports = {
       .use("svg-sprite-loader")
       .loader("svg-sprite-loader")
       .options({
-        symbolId: "icon-[name]",
+        symbolId: "icon-[name]"
       });
 
     //修改images loader 添加svg处理
@@ -37,7 +38,7 @@ module.exports = {
     imagesRule.exclude.add(resolve("src/icons"));
     config.module.rule("images").test(/\.(png|jpe?g|gif|svg)(\?.*)?$/);
   },
-  configureWebpack: (config) => {
+  configureWebpack: config => {
     if (process.env.NODE_ENV !== "production") return;
     return {
       plugins: [
@@ -58,14 +59,14 @@ module.exports = {
           // 这个很重要，如果没有配置这段，也不会进行预编译
           renderer: new Renderer({
             inject: {
-              foo: "bar",
+              foo: "bar"
             },
-            headless: false,
+            headless: false
             // 在 main.js 中 document.dispatchEvent(new Event('render-event'))，两者的事件名称要对应上。
             // renderAfterDocumentEvent: "render-event",
-          }),
-        }),
-      ],
+          })
+        })
+      ]
     };
   },
   devServer: {
@@ -76,9 +77,9 @@ module.exports = {
         secure: false, // 如果是https接口，需要配置这个参数
         changeOrigin: true, //是否跨域
         pathRewrite: {
-          "^/api": "",
-        },
-      },
-    },
-  },
+          "^/api": ""
+        }
+      }
+    }
+  }
 };

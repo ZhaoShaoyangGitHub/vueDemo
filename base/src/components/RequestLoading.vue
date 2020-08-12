@@ -14,13 +14,19 @@ export default {
   computed: {
     ...mapGetters(["requestLoading"]),
   },
-  created() {
-    console.log(this.$store.state);
-  },
+  created() {},
 };
 </script>
 
 <style lang="scss" scoped>
+@keyframes turnAround {
+  from {
+    transform: none;
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 .request-loading-component {
   position: fixed;
   left: 0;
@@ -28,12 +34,14 @@ export default {
   top: 0;
   bottom: 0;
   background-color: rgba(48, 65, 86, 0.2);
-  background-color: transparent;
   font-size: 150px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   z-index: 999999;
+  .svg-icon {
+    animation: turnAround 1s linear infinite;
+  }
 }
 </style>
