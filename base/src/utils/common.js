@@ -31,3 +31,14 @@ export const removeClass = (el, className) => {
   }
   el.className = newClass.join(" ");
 };
+
+/* ------获取元素的样式-------- */
+export const getStyle = (el, attr, numberMode = "int") => {
+  var target;
+  if (el.currentStyle) {
+    target = el.currentStyle[attr];
+  } else {
+    target = document.defaultView.getComputedStyle(el, null)[attr];
+  }
+  return numberMode === "float" ? parseFloat(target) : parseInt(target);
+};
