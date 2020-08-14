@@ -24,12 +24,12 @@ export const loadMore = {
       bind: function(el, binding) {
         let dpr = window.document.documentElement.getAttribute("data-dpr");
         let wHeight = window.screen.height * dpr;
-        let fooderHeight = 0;
+        let footerHeight = 0;
         let body, lastScrollTop, offsetTop, listHeight, marginBottom;
         const more = () => {
           if (
             wHeight + lastScrollTop >=
-            offsetTop + listHeight + marginBottom + fooderHeight
+            offsetTop + listHeight + marginBottom + footerHeight
           ) {
             binding.value.loadingMore();
           }
@@ -64,7 +64,7 @@ export const loadMore = {
             offsetTop = el.offsetTop;
             listHeight = el.clientHeight;
             if (binding.value.foot) {
-              fooderHeight = window.document.getElementById("footer")
+              footerHeight = window.document.getElementById("footer")
                 .clientHeight;
             }
             marginBottom = getStyle(el, "marginBottom");
