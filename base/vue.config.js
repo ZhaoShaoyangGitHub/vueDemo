@@ -61,7 +61,6 @@ module.exports = {
       args[0][
         "process.env"
       ].BASE_API = `"http://ip-30-rongyue-swagger.coralcodes.com/"`;
-      console.log(args);
       return args;
     });
 
@@ -136,7 +135,7 @@ module.exports = {
             },
             headless: false,
             // 在 main.js 中 document.dispatchEvent(new Event('render-event'))，两者的事件名称要对应上。
-            // renderAfterDocumentEvent: "render-event",
+            renderAfterDocumentEvent: "render-event",
           }),
         }),
       ];
