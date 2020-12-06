@@ -4,7 +4,7 @@
     <HelloWorld
       :msg.sync="title"
       :subTitle="subTitle"
-      @childSubTitle="emitSubTitle"
+      @childsubtitle="emitSubTitle"
     />
     <h2 v-role="color">{{ title}}</h2>
     <h3>{{ subTitle }}</h3>
@@ -12,7 +12,7 @@
     <h3>Store</h3>
     <button>store-commit</button>
     <h3>Watch</h3>
-    <button @click="add">增加</button><div>{{numerber1 | capitalize }}</div>
+    <button @click="add">增加222</button><div>{{numerber1 | capitalize }}</div>
     <button @click="subtraction">减少</button><div>{{numerber2}}</div>
   </div>
 </template>
