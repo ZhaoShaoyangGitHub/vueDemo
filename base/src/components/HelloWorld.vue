@@ -15,13 +15,14 @@ export default {
   props: {
     msg: String,
     subTitle: String,
+    childsubtitle: Function
   },
   methods: {
     emit() {
       this.$emit("update:msg", "childTitle");
     },
     emitSubTitle() {
-      this.$emit("childSubTitle", "change subTitle");
+      this.$emit("childsubtitle", "change subTitle");
     },
   },
   components: {

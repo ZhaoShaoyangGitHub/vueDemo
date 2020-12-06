@@ -15,7 +15,7 @@ const externals = {
   axios: "axios",
   "element-ui": "ELEMENT",
   "js-cookie": "Cookies",
-  nprogress: "NProgress",
+  nprogress: "NProgress"
 };
 
 const cdn = {
@@ -23,16 +23,16 @@ const cdn = {
   dev: {
     css: [
       "https://unpkg.com/element-ui/lib/theme-chalk/index.css",
-      "https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css",
+      "https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css"
     ],
-    js: [],
+    js: []
   },
 
   // 生产环境
   build: {
     css: [
       "https://unpkg.com/element-ui/lib/theme-chalk/index.css",
-      "https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css",
+      "https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css"
     ],
     js: [
       "https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js",
@@ -41,9 +41,9 @@ const cdn = {
       "https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js",
       "https://unpkg.com/element-ui/lib/index.js",
       "https://cdn.bootcss.com/js-cookie/2.2.0/js.cookie.min.js",
-      "https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js",
-    ],
-  },
+      "https://cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"
+    ]
+  }
 };
 
 // 是否使用gzip
@@ -52,9 +52,9 @@ const productionGzip = true;
 const productionGzipExtensions = ["js", "css"];
 
 module.exports = {
-  chainWebpack: (config) => {
+  chainWebpack: config => {
     //这里是对环境的配置，不同环境对应不同的BASE_API，以便axios的请求地址不同
-    config.plugin("define").tap((args) => {
+    config.plugin("define").tap(args => {
       const argv = process.argv;
       const mode = argv[argv.indexOf("--project-mode") + 1];
       args[0]["process.env"].MODE = `"${mode}"`;
@@ -68,7 +68,7 @@ module.exports = {
      * 添加CDN参数到htmlWebpackPlugin配置中， 详见public/index.html 修改
      */
 
-    config.plugin("html").tap((args) => {
+    config.plugin("html").tap(args => {
       if (process.env.NODE_ENV === "production") {
         args[0].cdn = cdn.build;
       }
@@ -87,7 +87,7 @@ module.exports = {
       .use("svg-sprite-loader")
       .loader("svg-sprite-loader")
       .options({
-        symbolId: "icon-[name]",
+        symbolId: "icon-[name]"
       });
 
     //修改images loader 添加svg处理
@@ -95,7 +95,7 @@ module.exports = {
     imagesRule.exclude.add(resolve("src/icons"));
     config.module.rule("images").test(/\.(png|jpe?g|gif|svg)(\?.*)?$/);
   },
-  configureWebpack: (config) => {
+  configureWebpack: config => {
     const myConfig = {};
     if (process.env.NODE_ENV === "production") {
       // 1. 生产环境npm包转CDN
@@ -110,7 +110,7 @@ module.exports = {
               "\\.(" + productionGzipExtensions.join("|") + ")$"
             ),
             threshold: 8192,
-            minRatio: 0.8,
+            minRatio: 0.8
           })
         );
 
@@ -131,13 +131,13 @@ module.exports = {
           // 这个很重要，如果没有配置这段，也不会进行预编译
           renderer: new Renderer({
             inject: {
-              foo: "bar",
+              foo: "bar"
             },
             headless: false,
             // 在 main.js 中 document.dispatchEvent(new Event('render-event'))，两者的事件名称要对应上。
-            renderAfterDocumentEvent: "render-event",
-          }),
-        }),
+            renderAfterDocumentEvent: "render-event"
+          })
+        })
       ];
     }
     if (process.env.NODE_ENV === "development") {
@@ -145,7 +145,7 @@ module.exports = {
        * 关闭host check，方便使用ngrok之类的内网转发工具
        */
       myConfig.devServer = {
-        disableHostCheck: true,
+        disableHostCheck: true
       };
     }
     return myConfig;
@@ -158,9 +158,9 @@ module.exports = {
         secure: false, // 如果是https接口，需要配置这个参数
         changeOrigin: true, //是否跨域
         pathRewrite: {
-          "^/api": "",
-        },
-      },
-    },
-  },
+          "^/api": ""
+        }
+      }
+    }
+  }
 };
